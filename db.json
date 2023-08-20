@@ -1,0 +1,30 @@
+{
+    "superheroes": [
+      {
+        "id": 1,
+        "name": "Superman",
+        "real_name": "Clark Kent"
+      },
+      {
+        "id": 2,
+        "name": "Batman",
+        "real_name": "Bruce Wayne"
+      },
+      {
+        "id": 3,
+        "name": "Wonder Woman",
+        "real_name": "Diana Prince"
+      },
+      {
+        "id": 4,
+        "name": "Spider-Man",
+        "real_name": "Peter Parker"
+      },
+      {
+        "id": 5,
+        "name": "Captain America",
+        "real_name": "Steve Rogers"
+      }
+    ]
+  }
+  
