@@ -3,12 +3,16 @@ import React from 'react'
 import { useQuery } from 'react-query'
 
 const fetchSuperHeroes = ()=>{
-  return axios.get(" http://localhost:400/superheroes1")
+  return axios.get(" http://localhost:400/superheroes")
 }
 
 export default function RQSuperheros() {
-  const {isLoading, data, isError,error} = useQuery('super-heroes',fetchSuperHeroes);
+  const {isLoading, data, isError, error, isFetching} = useQuery('super-heroes',fetchSuperHeroes,{
+    cacheTime:50000, // default chache time is 5 min
+    staleTime:30000, // deafult stale time is 0 sec
+  });
   // console.log(data)
+  console.log(isLoading,isFetching)
   if(isLoading){
     return <h2>Loading...</h2>
   }
