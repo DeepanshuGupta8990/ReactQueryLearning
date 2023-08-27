@@ -28,7 +28,6 @@ function App() {
             </li>
           </ul>
         </NavContainer>
-
         <Routes>
           <Route path='/super-heroes' element={<SuperHeros />} />
           <Route path='/rq-super-heroes' element={<RQSuperheros />} />

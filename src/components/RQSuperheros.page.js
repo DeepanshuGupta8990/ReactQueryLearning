@@ -8,8 +8,10 @@ const fetchSuperHeroes = ()=>{
 
 export default function RQSuperheros() {
   const {isLoading, data, isError, error, isFetching} = useQuery('super-heroes',fetchSuperHeroes,{
-    cacheTime:50000, // default chache time is 5 min
-    staleTime:30000, // deafult stale time is 0 sec
+    // cacheTime:50000, // default chache time is 5 min
+    // staleTime:30000, // deafult stale time is 0 sec
+    refetchOnMount:true, //query will refectch on mount if the data is stale , possible values are true,false,always
+    refetchOnWindowFocus:true
   });
   // console.log(data)
   console.log(isLoading,isFetching)
