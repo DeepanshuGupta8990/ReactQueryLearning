@@ -2,12 +2,13 @@
     "superheroes": [
       {
         "id": 1,
-        "name": "Superman1",
+        "name": "Superman",
         "real_name": "Clark Kent"
       },
       {
         "id": 2,
-        "name": "Batman",
+        "name": "Batman"
+        ,
         "real_name": "Bruce Wayne"
       },
       {
@@ -24,6 +25,17 @@
         "id": 5,
         "name": "Captain America",
         "real_name": "Steve Rogers"
+      }
+      
+    ],
+    "friends":[
+      {
+        "id":1,
+        "name":"Deepanshu"
+      },
+      {
+        "id":2,
+        "name":"Deep"
       }
     ]
   }
