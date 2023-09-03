@@ -1,35 +1,31 @@
 import axios from 'axios';
-import React from 'react'
+import React, { useState } from 'react'
 import { useQuery } from 'react-query'
+import {useSuperHeroesData} from '../hooks/useSuperHeroesData';
+import { Link } from 'react-router-dom';
 
-const fetchSuperHeroes = ()=>{
-  return axios.get(" http://localhost:400/superheroes")
-}
+
 
 export default function RQSuperheros() {
+  // const [polling,setPolling] = useState(3000);
   const onSuccess = (data)=>{
     console.log("Perform side effects after data fetching",data);
+    console.log(data)
+    // if(data.data.length>5){
+    //     // setPolling(false)
+    //     console.log('Polling is fasle now')
+    // }
   }
 
   const onError = (error)=>{
     console.log("Perform side effects after encountering error",error);
+    // setPolling(false);
   }
 
-  const {isLoading, data, isError, error, isFetching,refetch} = useQuery('super-heroes',fetchSuperHeroes,{
-    // cacheTime:50000, // default chache time is 5 min
-    // staleTime:30000, // deafult stale time is 0 sec
-    // refetchOnMount:true, //query will refectch on mount if the data is stale , possible values are true,false,always
-    // refetchOnWindowFocus:true,
-    refetchInterval:2000, //polling
-    refetchIntervalInBackground:true,
-    // enabled:false, // by using enabled we telling useQuery to not make fetch request or disabling fetching data on mount
-    onSuccess:onSuccess,// onSuccess function will be called when on successfull fetch
-    onError:onError  // onError fucntion will be called when error arried on data fetching
-
-  });
-  // console.log(data)
-  console.log(isLoading,isFetching)
-  if(isLoading || isFetching){
+  const {isLoading, data, isError, error, isFetching,refetch} = useSuperHeroesData(onSuccess,onError)
+  // console.log('data',data)
+  // console.log(isLoading,isFetching)
+  if(isLoading){
     return <h2>Loading...</h2>
   }
   if(isError){
@@ -38,16 +34,24 @@ export default function RQSuperheros() {
   return (
     <>
       <h2> RQ SuperHeros Page</h2>
-      {/* <button onClick={refetch}>Fecth Data</button> */}
+      <button onClick={refetch}>Fecth Data</button>
       {
       data?.data.map((hero)=>{
         return(
-          <div key={hero.name}>
+          <div key={hero.id}>
+            <Link to={`/rq-super-heros/${hero.id}`}>
               {hero.name}
+            </Link>
           </div>
         )
       })
       }
+
+      {/* {
+        data.map((heroName)=>{
+          return <div key={heroName}>{heroName}</div>
+        })
+      } */}
 
     </>
   )
